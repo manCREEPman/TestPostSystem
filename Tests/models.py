@@ -2,6 +2,7 @@ from django.db import models
 
 class Test(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
+    picture = models.ImageField(upload_to='Tests/static/Tests/images', verbose_name='Картинка')
 
     def __unicode__(self):
         return self.title
@@ -30,25 +31,10 @@ class TestTask(models.Model):
     class Meta:
         verbose_name = 'Задание'
         verbose_name_plural = 'Задания'
-    
-
-class CustomUser(models.Model):
-    nickname = models.CharField(max_length=100, verbose_name='Логин')
-
-    def __unicode__(self):
-        return self.nickname
-
-    def __str__(self):
-        return self.nickname
-
-    class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name = 'Пользователи'
 
 
 class UserTest(models.Model):
     test_id = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name='Тест')
-    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Пользователь')
     result_points = models.IntegerField(verbose_name='Результирующий балл')
     check_status = models.BooleanField(verbose_name='Статус проверки')
     

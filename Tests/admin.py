@@ -22,18 +22,8 @@ class TestTaskModelAdmin(admin.ModelAdmin):
         model = TestTask
 
 
-class CustomUserModelAdmin(admin.ModelAdmin):
-    list_display = ['nickname']
-    list_display_links = ['nickname']
-    list_filter = ['nickname']
-    search_fields = ['nickname']
-
-    class Meta:
-        model = CustomUser
-
-
 class UserTestModelAdmin(admin.ModelAdmin):
-    list_display = ['test_id', 'user_id', 'result_points', 'check_status']
+    list_display = ['test_id', 'result_points', 'check_status']
     list_display_links = ['test_id']
     list_filter = ['result_points']
 
@@ -53,6 +43,5 @@ class UserTestTaskModelAdmin(admin.ModelAdmin):
 
 admin.site.register(Test, TestModelAdmin)
 admin.site.register(TestTask, TestTaskModelAdmin)
-admin.site.register(CustomUser, CustomUserModelAdmin)
 admin.site.register(UserTest, UserTestModelAdmin)
 admin.site.register(UserTestTask, UserTestTaskModelAdmin)
