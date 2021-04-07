@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Test(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
@@ -23,10 +24,10 @@ class TestTask(models.Model):
     points = models.IntegerField(verbose_name='Баллы')
 
     def __unicode__(self):
-        return this.title
+        return self.title
 
     def __str__(self):
-        return this.title
+        return self.title
 
     class Meta:
         verbose_name = 'Задание'
@@ -34,6 +35,7 @@ class TestTask(models.Model):
 
 
 class UserTest(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     test_id = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name='Тест')
     result_points = models.IntegerField(verbose_name='Результирующий балл')
     check_status = models.BooleanField(verbose_name='Статус проверки')
@@ -53,10 +55,10 @@ class UserTestTask(models.Model):
     check_status = models.BooleanField(verbose_name='Статус проверки')
     
     def __unicode__(self):
-        return this.title
+        return self.title
 
     def __str__(self):
-        return this.title
+        return self.title
 
     class Meta:
         verbose_name = 'Задание пользователя'
