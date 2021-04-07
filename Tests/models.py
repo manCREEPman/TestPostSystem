@@ -21,6 +21,7 @@ class TestTask(models.Model):
     type = models.CharField(max_length=20, verbose_name='Тип ответа')
     title = models.CharField(max_length=50, verbose_name='Заголовок')
     task_statement = models.TextField(verbose_name='Формулировка задания')
+    correct_answer = models.TextField(verbose_name='Правильный ответ')
     points = models.IntegerField(verbose_name='Баллы')
 
     def __unicode__(self):
@@ -42,7 +43,7 @@ class UserTest(models.Model):
     
     class Meta:
         verbose_name = 'Тест пользователя'
-        verbose_name = 'Тесты пользователя'
+        verbose_name_plural = 'Тесты пользователя'
 
     
 class UserTestTask(models.Model):
@@ -51,6 +52,9 @@ class UserTestTask(models.Model):
     title = models.CharField(max_length=50, verbose_name='Заголовок')
     task_statement = models.TextField(verbose_name='Формулировка задания')
     points = models.IntegerField(verbose_name='Баллы задания')
+    correct_answer = models.TextField(verbose_name='Правильный ответ')
+    user_answer = models.TextField(verbose_name='Ответ пользователя')
+    user_file = models.FileField(verbose_name='Файл ответа')
     user_points = models.IntegerField(verbose_name='Полученные баллы')
     check_status = models.BooleanField(verbose_name='Статус проверки')
     
