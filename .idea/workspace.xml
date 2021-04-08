@@ -26,9 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd9fe715-9661-42c5-8f05-4cd0dfc413ca" name="Default Changelist" comment="Вход и выход, отображение постов">
-      <change afterPath="$PROJECT_DIR$/Tests/migrations/0003_usertest_user_id.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Posts/templates/newspage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Posts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestPostSystem/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestPostSystem/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestPostSystem/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestPostSystem/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -50,6 +52,7 @@
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectId" id="1qo5rgqABa457Aa2NF2uEKIJ3pf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -61,6 +64,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Diana\PycharmProjects\TestPostSystem\Posts" />
       <recent name="C:\Users\Diana\PycharmProjects\TestPostSystem\Posts\templates" />
     </key>
   </component>

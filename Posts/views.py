@@ -10,4 +10,4 @@ def posts_list(request):
     context={
         'queryset': queryset,
     }
-    return render(request,'testpostlists.html',context)
+    return render(request,'newspage.html',context)

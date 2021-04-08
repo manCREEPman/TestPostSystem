@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from Tests.views import (login_page,logout_user)
 from Posts.views import (posts_list)
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,3 +26,6 @@ urlpatterns = [
     path('logout/',logout_user, name='logout'),
     path('posts/', posts_list ),
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

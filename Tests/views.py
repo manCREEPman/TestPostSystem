@@ -29,7 +29,7 @@ def login_page(request):
 
     context={
     }
-    return render(request,'testlogin.html',context)
+    return render(request,'SignUp.html',context)
 
 def logout_user(request):
     logout(request)
