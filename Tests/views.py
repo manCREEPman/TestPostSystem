@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
 
 from .decorators import unauthenicated_user
 
@@ -23,7 +23,7 @@ def login_page(request):
 
         if user is not None:
             login(request,user)
-            return HttpResponseRedirect('/posts/')
+            return HttpResponseRedirect('/account/')
             # else:
             #     messages.info(request, 'Пароль или логин введены некорректно.')
 
@@ -34,3 +34,19 @@ def login_page(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/login/')
+
+@login_required(login_url='login')
+def account_page(request, user_id):
+
+    context={
+
+    }
+    return  render(request,'AccountForm.html', context)
+
+@login_required(login_url='login')
+def tests_page(request):
+
+    context={
+
+    }
+    return  render(request,'Tests.html', context)
