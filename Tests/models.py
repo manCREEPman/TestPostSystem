@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Test(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     picture = models.ImageField(upload_to='Tests/static/Tests/images', verbose_name='Картинка')
@@ -17,8 +18,14 @@ class Test(models.Model):
 
 
 class TestTask(models.Model):
+    
+    CHECK_TASK_CHOICES = [
+        ('TE', 'Вручную'),
+        ('CO', 'Автоматически')
+    ]
+
     test_id = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name='Тест')
-    type = models.CharField(max_length=20, verbose_name='Тип ответа')
+    type = models.CharField(max_length=20, choices=CHECK_TASK_CHOICES, default='comp', verbose_name='Тип ответа')
     title = models.CharField(max_length=50, verbose_name='Заголовок')
     task_statement = models.TextField(verbose_name='Формулировка задания')
     correct_answer = models.TextField(verbose_name='Правильный ответ')
