@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    {% if notification %}
+        <h3>{{notification}}</h3>
+    {% else %}
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <hr>
+            {% for user_task in queryset %}
+                <div>
+                    <h4>Задание: </h4><div>{{user_task.title}}</div>
+                    <br>
+                    <h4>Формулировка: </h4><div>{{user_task.task_statement}}</div>
+                    <br>
+                    <h4>Макс балл: </h4><div>{{user_task.points}}</div>
+                    <br>
+                    <h4>Файл ответа:</h4> <div><a href="{{user_task.user_file.url}}">Файл</a></div>
+                    <h4>Результат проверки</h4> <input type="number" name="task-{{user_task.id}}">
+                    <hr>
+                </div>
+            {% endfor %}
+            <input type="submit" value="Сохранить">
+        </form>
+    {% endif %}
+{% endblock %}

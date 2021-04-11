@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+    {% if notification %}
+        <h3>{{notification}}</h3>
+    {% else %}
+    <hr>
+        {% for user_test in queryset %}
+            <div>
+                <div><img src="{{ user_test.test_id.picture.url }}"></div>
+                <div><a href="/user_unchecked_tests/{{user_test.id}}">{{user_test.test_id.title}}</a></div>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

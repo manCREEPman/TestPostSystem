@@ -3,10 +3,15 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.forms import modelformset_factory
 from django.http import HttpResponse, HttpResponseRedirect
-import json
+import re
 
 from .models import (Test, TestTask, UserTest, UserTestTask)
 from .forms import (TestForm, TestTaskForm)
+
+
+def main_page(request):
+    return render(request, 'main.html')
+
 
 def create_test(request):
     if request.method == 'GET':
@@ -63,54 +68,82 @@ def create_tasks(request):
                 task.save()
         return redirect('/admin/')
 
+
+def list_unchecked_user_tests(request):
+    # print('popali suda')
+    queryset = UserTest.objects.select_related('test_id').filter(
+        check_status=False
+    )
+    context = {}
+    # print(queryset[0].test_id.title)
+    # print(queryset[0].id)
+    if len(queryset) == 0:
+        context['notification'] = 'В данный момент нет заданий для проверки'
+    context['queryset'] = queryset
+    print(context)
+    return render(request, 'unchecked_tests.html', context)
+
+
+def update_user_test_information(user_test_id):
+    if user_test_id != 0:
+        user_test_tasks = UserTestTask.objects.select_related('user_test_id').filter(
+            user_test_id__id=user_test_id,
+            check_status=False
+        )
         
+        if len(user_test_tasks) == 0:
+            UserTest.objects.filter(id=user_test_id).update(
+                check_status=True
+            )
+        
+        user_test_tasks = UserTestTask.objects.select_related('user_test_id').filter(
+            user_test_id__id=user_test_id
+        )
+        sum_points = 0
+        for utt in user_test_tasks:
+            sum_points += utt.points
+        UserTest.objects.filter(id=user_test_id).update(
+                result_points=sum_points
+        )
 
 
-def sample(request):
+def check_user_test(request):
     if request.method == 'GET':
-        return render(request, 'create_test.html')
+        user_test_id = int(re.findall(r'/\w+/(\d+)', request.path)[0])
+        unchecked_tasks = UserTestTask.objects.select_related('user_test_id').filter(
+            user_test_id__id=user_test_id,
+            check_status=False,
+            type='TE'
+        )
+        # print(unchecked_tasks[0].user_test_id)
+        # print(unchecked_tasks[0].type)
+        # print('user_test_id', unchecked_tasks[0].user_test_id.id)
+        context = {}
+        if len(unchecked_tasks) == 0:
+            context['notification'] = 'В данный момент нет заданий для проверки'
+            return render(request, 'unchecked_test_tasks.html', context)
+        context['queryset'] = unchecked_tasks
+        return render(request, 'unchecked_test_tasks.html', context)
     else:
-        # print(request.POST)
-        # for filename, file in request.FILES.items():
-        #     print(request.FILES[filename].name)
-        # return render(request, 'base.html')
-        print(request.FILES["file_field"])
-        file_image = request.POST.get('test_picture')
-        request.session['file_image'] = file_image
-        context = {'image': request.FILES["file_field"]}
-        return render(request, 'base.html', context)
-
-        test_form = TestForm(data=request.POST)
-        if test_form.is_valid():
-            test_form.save(commit=False)
-        return HttpResponseRedirect('admin')
-
-    #     postForm = PostForm(request.POST)
-    #     formset = ImageFormSet(request.POST, request.FILES,
-    #                            queryset=Images.objects.none())
-    
-    
-    #     if postForm.is_valid() and formset.is_valid():
-    #         post_form = postForm.save(commit=False)
-    #         post_form.user = request.user
-    #         post_form.save()
-    
-    #         for form in formset.cleaned_data:
-    #             #this helps to not crash if the user   
-    #             #do not upload all the photos
-    #             if form:
-    #                 image = form['image']
-    #                 photo = Images(post=post_form, image=image)
-    #                 photo.save()
-    #         # use django messages framework
-    #         messages.success(request,
-    #                          "Yeeew, check it out on the home page!")
-    #         return HttpResponseRedirect("/")
-    #     else:
-    #         print(postForm.errors, formset.errors)
-    # else:
-    #     postForm = PostForm()
-    #     formset = ImageFormSet(queryset=Images.objects.none())
-    # return render(request, 'index.html',
-    #               {'postForm': postForm, 'formset': formset})
-
+        print(request.POST)
+        user_test_id = 0
+        for task in request.POST.keys():
+            if task.find('task') != -1:
+                user_task_id = re.findall(r'task-(\d+)', task)[0]
+                user_task_points = int(request.POST[task])
+                if user_task_points < 0:
+                    user_task_points = 0
+                print('points', user_task_points)
+                print('user_task_id', user_task_id)
+                user_task = UserTestTask.objects.filter(id=user_task_id)
+                if user_task[0].points < user_task_points:
+                    user_task_points = user_task[0].points
+                UserTestTask.objects.filter(id=user_task_id).update(
+                    check_status=True,
+                    user_points=user_task_points
+                )
+                user_task = UserTestTask.objects.select_related('user_test_id').filter(
+                    id=user_task_id)
+                user_test_id = user_task[0].user_test_id.id
+        update_user_test_information(user_test_id)
+        return redirect('/user_unchecked_tests')

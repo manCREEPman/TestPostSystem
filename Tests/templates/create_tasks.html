@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Создание заданий</title>
-</head>
-<body>
-    <div>Создание заданий для теста "{{ test_title }}"</div>
+{% extends 'main.html' %}
+
+{% block content %}
+<div>Создание заданий для теста "{{ test_title }}"</div>
     <hr>
     <form id="post_form" method="post" action="/create_tasks?test_id={{test_id}}&" enctype="multipart/form-data">
         {% csrf_token %}
@@ -16,5 +12,4 @@
         {% endfor %}
         <input type="submit" name="submit" value="Submit" />
     </form>
-</body>
-</html>
+{% endblock %}

@@ -16,10 +16,17 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from Tests.views import *
 
 urlpatterns = [
     url('admin/', admin.site.urls),
+    url(r'main', main_page),
     url(r'create_test', create_test),
-    url(r'create_tasks', create_tasks)
+    url(r'create_tasks', create_tasks),
+    url(r'user_unchecked_tests$', list_unchecked_user_tests),
+    url(r'user_unchecked_tests/\d+$', check_user_test),
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
