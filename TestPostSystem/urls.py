@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from Tests.views import *
+from Posts.views import *
 
 urlpatterns = [
     url('admin/', admin.site.urls),
@@ -27,6 +27,13 @@ urlpatterns = [
     url(r'create_tasks', create_tasks),
     url(r'user_unchecked_tests$', list_unchecked_user_tests),
     url(r'user_unchecked_tests/\d+$', check_user_test),
+
+    url('login/', login_page, name='login' ),
+    url('logout/',logout_user, name='logout'),
+    url('posts/', posts_list, name='news' ),
+    url('account/', account_page, name='account'),
+    url('tests/', tests_page, name='tests'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
