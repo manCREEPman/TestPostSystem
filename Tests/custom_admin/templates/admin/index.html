@@ -1,0 +1,16 @@
+{% extends "admin/index.html" %}
+
+{% comment %}{% block extrastyle %}
+    {{ block.super }}
+    {# --- custom styles --- #}
+{% endblock %}{% endcomment %}
+
+{% block content %}
+    <div class="custom_block">
+        <p><a href="/create_test/">Создать тест</a></p>
+        <p><a href="/user_unchecked_tests">Тесты для проверки</a></p>
+        <p><a href="/admin/Posts/post/">Управление постами</a></p>
+    </div>
+
+    {{ block.super }}
+{% endblock %}

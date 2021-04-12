@@ -42,16 +42,7 @@ class UserTestTaskModelAdmin(admin.ModelAdmin):
         model = UserTestTask
 
 
-class CreateTestModelAdmin(admin.ModelAdmin):
-    list_display = ['show_url']
-
-    def show_url(self):
-        return format_html("<a href='{url}'>Создать тест</a>", url='/create_test/')
-
-    show_url.short_description = 'Создать тест'
-
 admin.site.register(Test, TestModelAdmin)
 admin.site.register(TestTask, TestTaskModelAdmin)
 admin.site.register(UserTest, UserTestModelAdmin)
 admin.site.register(UserTestTask, UserTestTaskModelAdmin)
-admin.site.register()
