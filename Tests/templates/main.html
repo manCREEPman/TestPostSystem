@@ -20,9 +20,11 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item" role="presentation"></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/posts/">Посты</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/tests/">Тесты</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/admin/">Админ панель</a></li>
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{%url 'news' %}">Посты</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{%url 'tests' %}">Тесты</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{%url 'account' %}">Личный кабинет</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{%url 'logout' %}">Выход</a></li>
                 </ul>
             </div>
         </div>
@@ -34,12 +36,9 @@
     
     <div class="footer-basic" style="margin-top: 30px;background-color: #dfe8ee;">
         <footer>
-            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-            <ul class="list-inline">
+               <ul class="list-inline">
                 <li class="list-inline-item"></li>
-                <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Contacts</a></li>
+
                 <li class="list-inline-item"></li>
             </ul>
             <p class="copyright">TestSuite © 2021</p>

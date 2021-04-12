@@ -20,75 +20,17 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:diana" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd9fe715-9661-42c5-8f05-4cd0dfc413ca" name="Default Changelist" comment="Добавлены шаблоны постов, формы входа и выход">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/css/styles.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-brands-400.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-brands-400.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-brands-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-brands-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-brands-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-regular-400.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-regular-400.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-regular-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-regular-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-regular-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-solid-900.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-solid-900.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-solid-900.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-solid-900.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fa-solid-900.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/fontawesome-all.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/ionicons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/ionicons.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/ionicons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/ionicons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/fonts/ionicons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/images/NB 990V5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/images/shutterstock_330576656.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/static/Posts/js/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Posts/templates/newspage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Posts/templates/newspage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestPostSystem/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestPostSystem/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/decorators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/css/styles.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-brands-400.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-brands-400.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-brands-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-brands-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-brands-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-regular-400.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-regular-400.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-regular-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-regular-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-regular-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-solid-900.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-solid-900.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-solid-900.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-solid-900.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fa-solid-900.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/fontawesome-all.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/ionicons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/ionicons.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/ionicons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/ionicons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/fonts/ionicons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/images/NB 990V5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/images/depositphotos_432176632-stock-photo-small-beautiful-corgi-dog-crosses.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/images/scale_1200_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/images/shutterstock_330576656.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/static/Tests/js/jquery.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/templates/AccountForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/templates/AccountForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/templates/SignUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/templates/SignUp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/templates/Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/templates/Tests.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/templates/Tests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/templates/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>

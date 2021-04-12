@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
@@ -20,7 +21,7 @@ from .forms import (TestForm, TestTaskForm)
 def main_page(request):
     return render(request, 'main.html')
 
-
+@staff_member_required
 def create_test(request):
     if request.method == 'GET':
         return render(request, 'create_test.html')
@@ -42,7 +43,7 @@ def create_test(request):
                 )
             )
 
-
+@staff_member_required
 def create_tasks(request):
     if request.method == 'GET':
         test_id = request.GET['id']
@@ -76,7 +77,7 @@ def create_tasks(request):
                 task.save()
         return redirect('/admin/')
 
-
+@staff_member_required(redirect_field_name='error')
 def list_unchecked_user_tests(request):
     # print('popali suda')
     queryset = UserTest.objects.select_related('test_id').filter(
@@ -91,7 +92,7 @@ def list_unchecked_user_tests(request):
     print(context)
     return render(request, 'unchecked_tests.html', context)
 
-
+@staff_member_required
 def update_user_test_information(user_test_id):
     if user_test_id != 0:
         user_test_tasks = UserTestTask.objects.select_related('user_test_id').filter(
@@ -114,7 +115,7 @@ def update_user_test_information(user_test_id):
                 result_points=sum_points
         )
 
-
+@staff_member_required
 def check_user_test(request):
     if request.method == 'GET':
         user_test_id = int(re.findall(r'/\w+/(\d+)', request.path)[0])
@@ -274,3 +275,5 @@ def tests_page(request):
     tests = Test.objects.all()
     context={'queryset': tests}
     return  render(request,'Tests.html', context)
+
+
