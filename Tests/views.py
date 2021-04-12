@@ -61,11 +61,13 @@ def create_tasks(request):
         TestTaskFormSet = modelformset_factory(TestTask, form=TestTaskForm)
         formset = TestTaskFormSet(request.POST)
 
+        max_points = 0
         if formset.is_valid():
             for form in formset.cleaned_data:
                 points = form['points']
                 if points <= 0:
                     points = 1
+                max_points += points
                 task = TestTask(
                     test_id=test,
                     type=form['type'],
@@ -75,7 +77,10 @@ def create_tasks(request):
                     points=points
                 )
                 task.save()
+            test.max_points = max_points
+            test.save()
         return redirect('/admin/')
+
 
 @staff_member_required(redirect_field_name='error')
 def list_unchecked_user_tests(request):
@@ -92,7 +97,7 @@ def list_unchecked_user_tests(request):
     print(context)
     return render(request, 'unchecked_tests.html', context)
 
-@staff_member_required
+
 def update_user_test_information(user_test_id):
     if user_test_id != 0:
         user_test_tasks = UserTestTask.objects.select_related('user_test_id').filter(
@@ -110,10 +115,11 @@ def update_user_test_information(user_test_id):
         )
         sum_points = 0
         for utt in user_test_tasks:
-            sum_points += utt.points
+            sum_points += utt.user_points
         UserTest.objects.filter(id=user_test_id).update(
                 result_points=sum_points
         )
+
 
 @staff_member_required
 def check_user_test(request):
@@ -254,9 +260,11 @@ def login_page(request):
     }
     return render(request,'SignUp.html',context)
 
+
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/login/')
+
 
 @login_required(login_url='login')
 def account_page(request):
@@ -270,10 +278,9 @@ def account_page(request):
     }
     return  render(request,'AccountForm.html', context)
 
+
 @login_required(login_url='login')
 def tests_page(request):
     tests = Test.objects.all()
     context={'queryset': tests}
     return  render(request,'Tests.html', context)
-
-

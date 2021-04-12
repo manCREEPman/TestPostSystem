@@ -27,15 +27,15 @@
             </div>
         </div>
     </nav>
-    <div class="container" style="margin-top: 35px;"><i class="far fa-user" style="font-size: 225px;margin-left: auto;margin-right: auto;display: block;width: 200px;color: #186d6d;"></i>
+    <div class="container" style="margin-top: 35px;"><i class="far fa-user" style="font-size: 150px;margin-left: auto;margin-right: auto;display: block;width: 132px;color: #186d6d;"></i>
         <p class="text-center" style="margin-top: 15px;font-size: large;">{{request.user}}</p>
     </div>
     <p class="text-center" style="font-size: x-large;padding-top: 10px;">Результаты тестов:</p>
-    <div></div>
+    <hr>
     {% for user_test in user_tests %}
     <div class="container" style="margin-top: 20px;">
         <div class="row" style="justify-content: space-between;">
-            <div class="col" style="flex: 0 1;margin-right: 10px;"><img class="rounded-circle" style="width: 200px;" src="assets/img/shutterstock_330576656.jpg"></div>
+            <div class="col" style="flex: 0 1;margin-right: 10px;"><img class="rounded-circle" style="width: 200px; height: 200px;" src="{{user_test.test_id.picture.url}}"></div>
             <div class="col" style="flex: 0 1;">
                 <p class="text-center" style="font-size: medium;width: 500px;">{{user_test.test_id.title}}<br><br></p>
             </div>
@@ -47,12 +47,13 @@
                 </div>
                 <div class="row">
                     <div class="col text-center" style="width: 230px;border-top: initial;border-color: initial;">
-                        <p class="text-center" style="font-size: x-large;border-top: 1px solid black;padding-top: 21px;width: 100px;display: block;margin-left: auto;margin-right: auto;">Где взять?</p>
+                        <p class="text-center" style="font-size: x-large;border-top: 1px solid black;padding-top: 21px;width: 100px;display: block;margin-left: auto;margin-right: auto;">{{user_test.test_id.max_points}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <hr>
       {% endfor %}
 
 

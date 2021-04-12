@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Test(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     picture = models.ImageField(upload_to='Tests/static/Tests/images', verbose_name='Картинка')
+    max_points = models.IntegerField(null=True, verbose_name='Максимальный балл')
 
     def __unicode__(self):
         return self.title
@@ -67,7 +68,7 @@ class UserTestTask(models.Model):
     correct_answer = models.TextField(verbose_name='Правильный ответ')
     user_answer = models.TextField(verbose_name='Ответ пользователя')
     user_file = models.FileField(upload_to='Tests/static/Tests/user_files',verbose_name='Файл ответа')
-    user_points = models.IntegerField(verbose_name='Полученные баллы')
+    user_points = models.IntegerField(default=0, verbose_name='Полученные баллы')
     check_status = models.BooleanField(verbose_name='Статус проверки')
     
     def __unicode__(self):
