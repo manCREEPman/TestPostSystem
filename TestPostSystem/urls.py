@@ -33,6 +33,7 @@ urlpatterns = [
     url('posts/', posts_list, name='news' ),
     url('account/', account_page, name='account'),
     url('tests/', tests_page, name='tests'),
+    url(r'pass_test/\d+$', pass_test),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

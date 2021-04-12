@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <hr>
+        {% for quest in auto_questions %}
+            <div>
+                <h4>Задание: </h4><div>{{quest.title}}</div> 
+                <br>
+                <h4>Формулировка: </h4><div>{{quest.task_statement}}</div>
+                <br>
+                <h4>Максимальный балл: </h4> <div>{{quest.points}}</div>
+                <br>
+                <h4>Ответ: </h4> <input type="text" name="task-{{quest.id}}">
+            </div>
+            <hr>
+        {% endfor %}
+            
+        {% for quest in handle_questions %}
+            <div>
+                <h4>Задание: </h4><div>{{quest.title}}</div> 
+                <br>
+                <h4>Формулировка: </h4><div>{{quest.task_statement}}</div>
+                <br>
+                <h4>Максимальный балл: </h4> <div>{{quest.points}}</div>
+                <br>
+                <h4>Ответ: </h4> <input type="file" name="task-{{quest.id}}">
+            </div>
+            <hr>
+        {% endfor %}
+
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock %}

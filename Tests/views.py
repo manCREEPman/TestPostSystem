@@ -156,6 +156,60 @@ def check_user_test(request):
         update_user_test_information(user_test_id)
         return redirect('/user_unchecked_tests')
 
+
+def pass_test(request):
+    if request.method == 'GET':
+        print(request.user.id)
+        test_id = int(re.findall(r'/\w+/(\d+)', request.path)[0])
+        if UserTest.objects.select_related('test_id', 'user_id').filter(
+                test_id__id=test_id,
+                user_id__id=request.user.id
+            ).exists():
+            queryset = UserTest.objects.select_related('test_id', 'user_id').filter(
+                test_id__id=test_id,
+                user_id__id=request.user.id
+            )
+            user_test = queryset[0]
+            user_tasks = UserTestTask.objects.select_related('user_test_id').filter(
+                user_test_id=user_test
+            )
+            context = {'user_tasks': user_tasks}
+            return render(request, 'user_test_details.html', context)
+        else:
+            test = get_object_or_404(Test, id=test_id)
+            test_tasks = TestTask.objects.select_related('test_id').filter(
+                test_id=test
+            )
+            user_test = UserTest.objects.create(
+                user_id=request.user,
+                test_id=test,
+                result_points=0,
+                check_status=False
+            )
+            auto_questions = []
+            handle_questions = []
+            for test_task in test_tasks:
+                new_user_task = UserTestTask.objects.create(
+                    user_test_id=user_test,
+                    type=test_task.type,
+                    title=test_task.title,
+                    task_statement=test_task.task_statement,
+                    points=test_task.points,
+                    correct_answer=test_task.correct_answer,
+                    user_file=None,
+                    user_points=0,
+                    check_status=False
+                )
+                if test_task.type == 'TE':
+                    handle_questions.append(new_user_task)
+                else:
+                    auto_questions.append(new_user_task)
+            context = {'auto_questions': auto_questions, 'handle_questions': handle_questions}
+            return render(request, 'user_test.html', context)
+    else:
+        pass
+
+
 #@login_required(login_url='login')
 
 @unauthenicated_user
@@ -185,14 +239,12 @@ def logout_user(request):
 def account_page(request, user_id):
 
     context={
-
+        # наполнить контентом
     }
     return  render(request,'AccountForm.html', context)
 
 @login_required(login_url='login')
 def tests_page(request):
-
-    context={
-
-    }
+    tests = Test.objects.all()
+    context={'queryset': tests}
     return  render(request,'Tests.html', context)

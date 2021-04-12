@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    {% for user_task in user_tasks%}
+        <div>
+            <h4>Задание: </h4><div>{{user_task.title}}</div>
+            <br>
+            <h4>Формулировка: </h4><div>{{user_task.task_statement}}</div>
+            <br>
+            <h4>Правильный ответ</h4> <div>{{user_task.correct_answer}}</div>
+            <br>
+            <h4>Максимальный балл:</h4> <div>{{user_task.points}}</div> <h4>Вы набрали:</h4><div>{{user_task.user_points}}</div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

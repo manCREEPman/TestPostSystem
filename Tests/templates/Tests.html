@@ -1,91 +1,11 @@
-{% load static %}
-<html>
+{% extends 'main.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>TestPostSystem</title>>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-
-     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/fontawesome-all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
-</head>
-
-<body style="font-family: Roboto, sans-serif;">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background-color: #dfe8ee;">
-        <div class="container"><a class="navbar-brand" href="#">TestSuite</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation"></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{%url 'news' %}">Посты</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{%url 'tests' %}">Тесты</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{%url 'account' %}">Личный кабинет</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{%url 'logout' %}">Выход</a></li>
-                </ul>
-            </div>
+{% block content %}
+    {% for test in queryset %}
+        <div>
+            <img src="{{test.picture.url}}" alt="Картинка теста">
+            <div>{{test.title}}</div>
+            <div><a href="/pass_test/{{test.id}}">Пройти тест</a></div>
         </div>
-    </nav>
-    <p class="text-center" style="margin-top: 30px;font-size: x-large;">Тесты:</p>
-    <div class="container" style="margin-top: 20px;">
-        <div class="row" style="justify-content: space-between;">
-            <div class="col" style="flex: 0 1;margin-right: 10px;"><img class="rounded-circle" style="width: 200px;" src="assets/img/shutterstock_330576656.jpg"></div>
-            <div class="col" style="flex: 0 1;">
-                <p class="text-center" style="font-size: medium;width: 500px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br><br></p>
-            </div>
-            <div class="col" style="flex: 0 1;">
-                <div class="row">
-                    <div class="col" style="display: block;padding-top: 40px;"><a class="btn btn-primary" role="button" style="width: 200px;background-color: #208f8f;border-radius: 20px;text-decoration: none;font-size: medium;color: #f2f5f8;">Пройти тест</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container" style="margin-top: 20px;">
-        <div class="row" style="justify-content: space-between;">
-            <div class="col" style="flex: 0 1;margin-right: 10px;"><img class="rounded-circle" style="width: 200px;" src="assets/img/shutterstock_330576656.jpg"></div>
-            <div class="col" style="flex: 0 1;">
-                <p class="text-center" style="font-size: medium;width: 500px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br><br></p>
-            </div>
-            <div class="col" style="flex: 0 1;">
-                <div class="row">
-                    <div class="col" style="display: block;padding-top: 40px;"><a class="btn btn-primary" role="button" style="width: 200px;background-color: #208f8f;border-radius: 20px;text-decoration: none;font-size: medium;color: #f2f5f8;">Пройти тест</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container" style="margin-top: 20px;">
-        <div class="row" style="justify-content: space-between;">
-            <div class="col" style="flex: 0 1;margin-right: 10px;"><img class="rounded-circle" style="width: 200px;" src="assets/img/shutterstock_330576656.jpg"></div>
-            <div class="col" style="flex: 0 1;">
-                <p class="text-center" style="font-size: medium;width: 500px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br><br></p>
-            </div>
-            <div class="col" style="flex: 0 1;">
-                <div class="row">
-                    <div class="col" style="display: block;padding-top: 40px;"><a class="btn btn-primary" role="button" style="width: 200px;background-color: #208f8f;border-radius: 20px;text-decoration: none;font-size: medium;color: #f2f5f8;">Пройти тест</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-basic" style="margin-top: 30px;background-color: #dfe8ee;">
-        <footer>
-            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"></li>
-                <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Contacts</a></li>
-                <li class="list-inline-item"></li>
-            </ul>
-            <p class="copyright">TestSuite © 2021</p>
-        </footer>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    {% endfor %}
+{% endblock %}
