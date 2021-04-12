@@ -8,17 +8,49 @@
             {% csrf_token %}
             <hr>
             {% for user_task in queryset %}
-                <div>
-                    <h4>Задание: </h4><div>{{user_task.title}}</div>
-                    <br>
-                    <h4>Формулировка: </h4><div>{{user_task.task_statement}}</div>
-                    <br>
-                    <h4>Макс балл: </h4><div>{{user_task.points}}</div>
-                    <br>
-                    <h4>Файл ответа:</h4> <div><a href="{{user_task.user_file.url}}">Файл</a></div>
-                    <h4>Результат проверки</h4> <input type="number" name="task-{{user_task.id}}">
-                    <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Задание: </h4>
+                        </div>
+                        <div class="col">
+                            <div>{{user_task.title}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Формулировка: </h4>
+                        </div>
+                        <div class="col">
+                            <div>{{user_task.task_statement}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Макс балл: </h4>
+                        </div>
+                        <div class="col">
+                            <div>{{user_task.points}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Файл ответа:</h4>
+                        </div>
+                        <div class="col">
+                            <div><a href="{{user_task.user_file.url}}">Файл</a></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Результат проверки</h4>
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="number" name="task-{{user_task.id}}">
+                        </div>
+                    </div>
                 </div>
+                <hr>
             {% endfor %}
             <input type="submit" value="Сохранить">
         </form>

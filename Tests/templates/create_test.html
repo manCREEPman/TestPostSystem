@@ -4,12 +4,28 @@
 {% block content %}
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div>Заголовок теста</div> <input id="test_title_id" type="text" name="test_title">
-    <br>
-    <div>Картинка теста</div> <input id="test_icon_id" type="file" name="test_picture">
-    <br>
-    <div>Количество заданий</div> <input id="number_of_tasks_id" type="number" name="number_of_tasks">
-    <br>
-    <input id="create_test_button_id" type="submit" value="Создать" name="create_test_button">
+    <div class="container">
+        <div class="row" style="justify-content: space-between; padding: 15px 0;">
+            <div class="col">Заголовок теста</div> 
+            <div class="col"><input class="form-control" id="test_title_id" type="text" name="test_title"></div>
+        </div>
+        <div class="row" style="justify-content: space-between; padding: 15px 0;">
+            <div class="col">Картинка теста</div>
+            <div class="col"><input class="form-control" style="border: none;"  id="test_icon_id" type="file" name="test_picture"></div>
+        </div>
+        <div class="row" style="justify-content: space-between; padding: 15px 0;">
+            <div class="col">Количество заданий</div>
+            <div class="col"><input class="form-control"  id="number_of_tasks_id" type="number" name="number_of_tasks"></div>
+        </div>
+        <div class="row">
+            <input  id="create_test_button_id" type="submit" value="Создать" name="create_test_button">
+        </div>
+    </div>
+    
+    <!-- <div class="row" style="justify-content: space-between;">
+        <div class="col"></div>
+        <div class="col"></div>
+    </div> -->
+    
 </form>  
 {% endblock %}

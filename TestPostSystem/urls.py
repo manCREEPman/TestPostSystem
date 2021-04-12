@@ -22,7 +22,7 @@ from Posts.views import *
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'main', main_page),
+    url(r'main', posts_list),
     url(r'create_test', create_test),
     url(r'create_tasks', create_tasks),
     url(r'user_unchecked_tests$', list_unchecked_user_tests),

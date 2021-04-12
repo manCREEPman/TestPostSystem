@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.forms import modelformset_factory
+from django.forms import formset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.contrib.auth.forms import UserCreationForm
@@ -48,7 +49,7 @@ def create_tasks(request):
     if request.method == 'GET':
         test_id = request.GET['id']
         number_of_tasks = int(request.GET['number_of_tasks'])
-        tasks_forms = modelformset_factory(TestTask, TestTaskForm, extra=number_of_tasks)
+        tasks_forms = formset_factory(TestTaskForm, extra=number_of_tasks)
         context = {
             'test_title': Test.objects.get(id=test_id).title,
             'test_id': test_id,

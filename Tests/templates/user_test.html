@@ -5,27 +5,45 @@
         {% csrf_token %}
         <hr>
         {% for quest in auto_questions %}
-            <div>
-                <h4>Задание: </h4><div>{{quest.title}}</div> 
-                <br>
-                <h4>Формулировка: </h4><div>{{quest.task_statement}}</div>
-                <br>
-                <h4>Максимальный балл: </h4> <div>{{quest.points}}</div>
-                <br>
-                <h4>Ответ: </h4> <input type="text" name="auto-task-{{quest.id}}">
+            <div class="container">
+                <div class="row">
+                    <div class="col"><h4>Задание: </h4></div>
+                    <div class="col"><div>{{quest.title}}</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><h4>Формулировка: </h4></div>
+                    <div class="col"><div>{{quest.task_statement}}</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><h4>Максимальный балл: </h4></div>
+                    <div class="col"><div>{{quest.points}}</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><h4>Ответ: </h4></div>
+                    <div class="col"><input type="text" name="auto-task-{{quest.id}}"></div>
+                </div>
             </div>
             <hr>
         {% endfor %}
             
         {% for quest in handle_questions %}
-            <div>
-                <h4>Задание: </h4><div>{{quest.title}}</div> 
-                <br>
-                <h4>Формулировка: </h4><div>{{quest.task_statement}}</div>
-                <br>
-                <h4>Максимальный балл: </h4> <div>{{quest.points}}</div>
-                <br>
-                <h4>Ответ: </h4> <input type="file" name="handle-task-{{quest.id}}">
+            <div class="container">
+                <div class="row">
+                    <div class="col"><h4>Задание: </h4></div>
+                    <div class="col"><div>{{quest.title}}</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><h4>Формулировка: </h4></div>
+                    <div class="col"><div>{{quest.task_statement}}</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><h4>Максимальный балл: </h4></div>
+                    <div class="col"><div>{{quest.points}}</div></div>
+                </div>
+                <div class="row">
+                    <div class="col"><h4>Ответ: </h4></div>
+                    <div class="col"><input type="file" name="handle-task-{{quest.id}}"></div>
+                </div>
             </div>
             <hr>
         {% endfor %}

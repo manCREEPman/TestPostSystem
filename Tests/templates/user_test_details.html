@@ -2,15 +2,46 @@
 
 {% block content %}
     {% for user_task in user_tasks%}
-        <div>
-            <h4>Задание: </h4><div>{{user_task.title}}</div>
-            <br>
-            <h4>Формулировка: </h4><div>{{user_task.task_statement}}</div>
-            <br>
-            <h4>Правильный ответ</h4> <div>{{user_task.correct_answer}}</div>
-            <br>
-            <h4>Максимальный балл:</h4> <div>{{user_task.points}}</div> <h4>Вы набрали:</h4><div>{{user_task.user_points}}</div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h4>Задание: </h4>
+                </div>
+                <div class="col">
+                    <div>{{user_task.title}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>Формулировка: </h4>
+                </div>
+                <div class="col">
+                    <div>{{user_task.task_statement}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>Правильный ответ</h4>
+                </div>
+                <div class="col">
+                    <div>{{user_task.correct_answer}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>Максимальный балл:</h4>
+                </div>
+                <div class="col">
+                    <div>{{user_task.points}}</div>
+                </div>
+                <div class="col">
+                    <h4>Вы набрали:</h4>
+                </div>
+                <div class="col">
+                    <div>{{user_task.user_points}}</div>
+                </div>
+            </div>
+            <hr>
         </div>
-        <hr>
     {% endfor %}
 {% endblock %}

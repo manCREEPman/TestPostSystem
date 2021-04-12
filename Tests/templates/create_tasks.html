@@ -1,15 +1,68 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<div>Создание заданий для теста "{{ test_title }}"</div>
+<div class="container" style="padding: 15px 0;">
+    <div class="row">
+        <div class="col">
+            Создание заданий для теста "{{ test_title }}"
+        </div>
+    </div>
+</div>
     <hr>
     <form id="post_form" method="post" action="/create_tasks?test_id={{test_id}}&" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ tasks_forms.management_form }}
-        {% for form in tasks_forms %}
-            {{ form.as_p }}
-            <hr>
-        {% endfor %}
-        <input type="submit" name="submit" value="Submit" />
+        <style>
+            input{
+                padding: 0;
+            }
+        </style>
+        <div class="container">
+            {{ tasks_forms.management_form }}
+            {% for form in tasks_forms %}
+                <div class="row" style="padding-bottom: 15px;">
+                    <div class="col" style="margin-top: -10px;">
+                        {{form.type.label_tag}}
+                    </div>
+                    <div class="col">
+                        {{form.type}}
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 15px;">
+                    <div class="col" style="margin-top: -10px;">
+                        {{form.title.label_tag}}
+                    </div>
+                    <div class="col">
+                        {{form.title}}
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 15px;">
+                    <div class="col" style="margin-top: -10px;">
+                        {{form.task_statement.label_tag}}
+                    </div>
+                    <div class="col">
+                        {{form.task_statement}}
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 15px;">
+                    <div class="col" style="margin-top: -10px;">
+                        {{form.correct_answer.label_tag}}
+                    </div>
+                    <div class="col">
+                        {{form.correct_answer}}
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 15px;">
+                    <div class="col" style="margin-top: -10px;">
+                        {{form.points.label_tag}}
+                    </div>
+                    <div class="col">
+                        {{form.points}}
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Submit" />
+        </div>
     </form>
 {% endblock %}
