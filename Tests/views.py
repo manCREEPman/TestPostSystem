@@ -207,7 +207,29 @@ def pass_test(request):
             context = {'auto_questions': auto_questions, 'handle_questions': handle_questions}
             return render(request, 'user_test.html', context)
     else:
-        pass
+        print(request.POST)
+        print(request.FILES)
+        user_test_id = 0
+        for question in request.POST.keys():
+            if question.find('task') != -1:
+                user_task_id = re.findall(r'auto-task-(\d+)', question)[0]
+                user_task = get_object_or_404(UserTestTask, id=user_task_id)
+                user_answer = request.POST[question]
+                if user_task.correct_answer == user_answer:
+                    user_task.user_points = user_task.points
+                user_task.user_answer = user_answer
+                user_task.check_status = True
+                user_test_id = user_task.user_test_id.id
+                user_task.save()
+        
+        for file_input in request.FILES.keys():
+            user_task_id = re.findall(r'handle-task-(\d+)', file_input)[0]
+            user_task = get_object_or_404(UserTestTask, id=user_task_id)
+            user_task.user_file = request.FILES[file_input]
+            user_test_id = user_task.user_test_id.id
+            user_task.save()
+        update_user_test_information(user_test_id)
+        return redirect('tests/')
 
 
 #@login_required(login_url='login')
@@ -236,10 +258,14 @@ def logout_user(request):
     return HttpResponseRedirect('/login/')
 
 @login_required(login_url='login')
-def account_page(request, user_id):
+def account_page(request):
+    user_id = request.user.id
+    user_tests = UserTest.objects.select_related('user_id', 'test_id').filter(
+        user_id=user_id
+    )
 
     context={
-        # наполнить контентом
+        'user_tests': user_tests
     }
     return  render(request,'AccountForm.html', context)
 
